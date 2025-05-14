@@ -30,6 +30,12 @@ def main():
     df = ler_dados_postgres()
 
     if not df.empty:
+        st.subheader("🔢 Estatísticas Gerais")
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Preço Atual", f"${df['valor'].iloc[-1]:,.2f}")
+        col2.metric("Preço Máximo", f"${df['valor'].max():,.2f}")
+        col3.metric("Preço Mínimo", f"${df['valor'].min():,.2f}")
+        
         st.subheader("📋 Dados Recentes")
         st.dataframe(df)
 
@@ -38,12 +44,6 @@ def main():
         
         st.subheader("📈 Evolução do Preço do Bitcoin")
         st.line_chart(data=df, x='timestamp', y='valor', use_container_width=True)
-
-        st.subheader("🔢 Estatísticas Gerais")
-        col1, col2, col3 = st.columns(3)
-        col1.metric("Preço Atual", f"${df['valor'].iloc[-1]:,.2f}")
-        col2.metric("Preço Máximo", f"${df['valor'].max():,.2f}")
-        col3.metric("Preço Mínimo", f"${df['valor'].min():,.2f}")
     else:
         st.warning("Nenhum dado encontrado no banco de dados PostgreSQL.")
 
