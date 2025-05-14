@@ -1,4 +1,5 @@
 import requests
+from tinydb import TinyDB
 
 def extrair():
     url = "https://api.coinbase.com/v2/prices/spot"
@@ -15,6 +16,11 @@ def transformar(dados_json):
         "moeda": moeda
                 }
     return dados_tratados
+
+def load(dados_tratados):
+    db = TinyDB("db.json")
+    db.insert(dados_tratados)
+    print("Dados foram salvos com sucesso!")
 
 if __name__ == "__main__":
     dados_json = extrair()
