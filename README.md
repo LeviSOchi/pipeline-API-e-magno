@@ -37,7 +37,7 @@ Este projeto consiste em uma pipeline ETL (Extração, Transformação e Carga) 
 1.  **Clone o repositório:**
 
     ```bash
-    git clone [URL do seu repositório]
+    git clone https://github.com/LeviSOchi/pipeline-API-e-magno.git
     cd pipeline-API-e-magno
     ```
 
